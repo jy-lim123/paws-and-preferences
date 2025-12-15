@@ -12,6 +12,13 @@ function CatCard () {
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
+    useEffect(() => {
+    catImages.forEach((url) => {
+      const img = new Image();
+      img.src = url;
+    });
+  }, [catImages]);
+
   function nextImage() {
     if (currentIndex < 14){
       setCurrentIndex(currentIndex + 1);
@@ -20,7 +27,7 @@ function CatCard () {
   }
 
   function resetImage() {
-    setCatImages([]);
+    //setCatImages([]);
     setCurrentIndex(0);
   }
 
