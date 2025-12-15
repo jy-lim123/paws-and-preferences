@@ -3,7 +3,7 @@
   flex-direction: column;
   flex-grow: 1;
   align-items: center;
-  padding: 20px;
+  padding: 0px 20px 10px 20px;
 }
 
 .summary-list {
@@ -16,18 +16,29 @@
   overflow: scroll;
   scrollbar-width: none;
   margin-top: 20px;
+  padding: 5px;
 }
 
 .summary-image{
   width: 100%;
   border-radius: 20px;
-  margin: 3px;
+  object-fit: cover;
 }
 
 .reset-button{
-  width: 150px;
+  padding: 10px 30px;
   border: none;
   border-radius: 10px;
-  background-color: coral;
+  background-color:#ecb567;
   color: white;
+  margin-top: 25px;
+  font-size: 24px;
+}
+
+.reset-button:hover{
+  background-color: #e8a241;
+}
+
+h1,p {
+  margin: 10px 0px;
 }

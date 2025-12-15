@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import CatCard from './components/CatCard'
 import Summary from './components/Summary';
+import Header from './components/Header';
 
 function App() {
   const [likedCat, setLikedCat] = useState([]);
@@ -21,28 +22,31 @@ function App() {
     setLikedCat([]);
   }
   return (
-    <div className='app-container'>
-      {currentIndex < catImages.length ? (
-        <>
-          <h1>CatSwipe</h1>
-          <h2>Let's find out what types of cats you like</h2>
-          <p>Swipe right for cats that you like, and swipe left for cats that you dislike</p>
-          <CatCard 
-            catImages={catImages}
-            currentIndex={currentIndex}
-            setCurrentIndex={setCurrentIndex}
-            setLikedCat={setLikedCat}
-            likedCat={likedCat}
+    <>
+      <Header />
+      <div className='app-container'>
+        {currentIndex < catImages.length ? (
+          <>
+            <h2>Let's find out what types of cats you like</h2>
+            <p>Swipe right for cats that you like, and swipe left for cats that you dislike</p>
+            <CatCard 
+              catImages={catImages}
+              currentIndex={currentIndex}
+              setCurrentIndex={setCurrentIndex}
+              setLikedCat={setLikedCat}
+              likedCat={likedCat}
+            />
+          </>
+        ) : (
+          <Summary 
+            likedCat = {likedCat}
+            onReset = {resetApp}
           />
-        </>
-      ) : (
-        <Summary 
-          likedCat = {likedCat}
-          onReset = {resetApp}
-        />
-      )
-      }
-    </div>
+        )
+        }
+      </div>
+    </>
+
   )
 }
 

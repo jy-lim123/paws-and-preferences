@@ -1,0 +1,9 @@
+.card-container{
+  touch-action: pan-y;
+  user-select: none;
+  margin-top: 30px;
+}
+
+.card-img{
+  border-radius: 30px;
+}

@@ -5,6 +5,7 @@ function Summary ({ likedCat, onReset }) {
     <div className='summary-container'>
       <h1>Summary</h1>
       <p>You liked {likedCat.length} cats</p>
+      <p>Check them out!</p>
       
       <div className="summary-list">
         {likedCat.map((cat, index) => (

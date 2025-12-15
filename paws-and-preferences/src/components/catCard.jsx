@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useSwipeable } from 'react-swipeable';
+import './CatCard.css'
 
 function CatCard ({ catImages, currentIndex, setCurrentIndex, setLikedCat }) {
   
@@ -33,17 +34,17 @@ function CatCard ({ catImages, currentIndex, setCurrentIndex, setLikedCat }) {
 
   return (
     <>
-      <div {...handlers} style={{ touchAction: 'pan-y', userSelect: 'none'}}>
+      <div 
+        className='card-container'
+        {...handlers} 
+      >
         <img 
           src={catImages[currentIndex]} 
           draggable={false}
-              style={{
-
-      borderRadius: '30px',
-    }}
+          className='card-img'
         />
       </div>
-      <p>Cat {currentIndex + 1} of 15</p>
+      <p>Cat <strong>{currentIndex + 1}</strong> of <strong>15</strong></p>
     </>
   );
 }
