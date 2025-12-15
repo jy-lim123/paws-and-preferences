@@ -22,18 +22,19 @@ function App() {
   }
   return (
     <div className='app-container'>
-      <h1>CatSwipe</h1>
-      <h2>Let's find out what types of cats you like</h2>
-      <p>Swipe right for cats that you like, and swipe left for cats that you dislike</p>
-
       {currentIndex < catImages.length ? (
-        <CatCard 
-        catImages={catImages}
-        currentIndex={currentIndex}
-        setCurrentIndex={setCurrentIndex}
-        setLikedCat={setLikedCat}
-        likedCat={likedCat}
-      />
+        <>
+          <h1>CatSwipe</h1>
+          <h2>Let's find out what types of cats you like</h2>
+          <p>Swipe right for cats that you like, and swipe left for cats that you dislike</p>
+          <CatCard 
+            catImages={catImages}
+            currentIndex={currentIndex}
+            setCurrentIndex={setCurrentIndex}
+            setLikedCat={setLikedCat}
+            likedCat={likedCat}
+          />
+        </>
       ) : (
         <Summary 
           likedCat = {likedCat}

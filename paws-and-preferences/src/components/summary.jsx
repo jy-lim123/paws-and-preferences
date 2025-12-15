@@ -1,26 +1,26 @@
+import './Summary.css';
+
 function Summary ({ likedCat, onReset }) {
   return (
-    <>
+    <div className='summary-container'>
       <h1>Summary</h1>
       <p>You liked {likedCat.length} cats</p>
       
-      <div>
+      <div className="summary-list">
         {likedCat.map((cat, index) => (
           <img
+            className='summary-image'
             key={index}
             src={cat}
-            alt="Liked cat"
-            style={{
-              width: '100px',
-              borderRadius: '12px',
-              margin: '6px'
-            }}
           />
         ))}
       </div>
 
-      <button onClick={onReset}>Restart</button>
-    </>
+      <button 
+        className='reset-button'
+        onClick={onReset}
+      >Restart</button>
+    </div>
   );
 }
 
