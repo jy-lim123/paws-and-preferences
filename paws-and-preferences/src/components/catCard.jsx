@@ -1,18 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useSwipeable } from 'react-swipeable';
 
-function CatCard ({ catImages, currentIndex, setCurrentIndex }) {
-  // const TOTAL_IMAGES = 15;
-  // const [catImages, setCatImages] = useState(() => {
-  //   const imgUrl = [];
-  //   for (let i = 0; i < TOTAL_IMAGES; i++){
-  //     imgUrl.push("https://cataas.com/cat?width=500&height=500&random=${i}")
-  //   }
-  //   return imgUrl;
-  // });
-
-  // const [currentIndex, setCurrentIndex] = useState(0);
-
-    useEffect(() => {
+function CatCard ({ catImages, currentIndex, setCurrentIndex, setLikedCat }) {
+  
+  useEffect(() => {
     catImages.forEach((url) => {
       const img = new Image();
       img.src = url;
@@ -20,26 +11,41 @@ function CatCard ({ catImages, currentIndex, setCurrentIndex }) {
   }, [catImages]);
 
   function nextImage() {
-    if (currentIndex < 14){
+    //if (currentIndex < catImages.length - 1){
       setCurrentIndex(currentIndex + 1);
-    }
-    
+    //}
   }
-
-  function resetImage() {
-    //setCatImages([]);
-    setCurrentIndex(0);
-  }
-
+  
+  const handlers = useSwipeable({
+    onSwipedLeft: () => {
+      console.log('Disliked!');
+      nextImage();
+    },
+    onSwipedRight: () => {
+      console.log('Liked!');
+      setLikedCat(prev => [...prev, catImages[currentIndex]]);
+      nextImage();
+    },
+    trackMouse: true,
+    preventScrollOnSwipe: true,
+    delta: 50 
+  });
 
   return (
     <>
-      <img src={catImages[currentIndex]} />
-      <button onClick = {nextImage}>Next</button>
-      <button onClick = {resetImage}>Reset</button>
+      <div {...handlers} style={{ touchAction: 'pan-y', userSelect: 'none'}}>
+        <img 
+          src={catImages[currentIndex]} 
+          draggable={false}
+              style={{
+
+      borderRadius: '30px',
+    }}
+        />
+      </div>
       <p>Cat {currentIndex + 1} of 15</p>
     </>
   );
 }
 
-export default CatCard
+export default CatCard;
