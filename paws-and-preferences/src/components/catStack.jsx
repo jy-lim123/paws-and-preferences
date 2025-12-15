@@ -1,5 +1,5 @@
-function catStack (){
+function CatStack (){
 
 }
 
-export default catStack;
+export default CatStack;
