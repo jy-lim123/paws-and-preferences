@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react';
 
-function CatCard () {
-  const TOTAL_IMAGES = 15;
-  const [catImages, setCatImages] = useState(() => {
-    const imgUrl = [];
-    for (let i = 0; i < TOTAL_IMAGES; i++){
-      imgUrl.push(`https://cataas.com/cat?width=450&height=600&random=${i}`)
-    }
-    return imgUrl;
-  });
+function CatCard ({ catImages, currentIndex, setCurrentIndex }) {
+  // const TOTAL_IMAGES = 15;
+  // const [catImages, setCatImages] = useState(() => {
+  //   const imgUrl = [];
+  //   for (let i = 0; i < TOTAL_IMAGES; i++){
+  //     imgUrl.push("https://cataas.com/cat?width=500&height=500&random=${i}")
+  //   }
+  //   return imgUrl;
+  // });
 
-  const [currentIndex, setCurrentIndex] = useState(0);
+  // const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
     catImages.forEach((url) => {
@@ -32,7 +32,6 @@ function CatCard () {
   }
 
 
-  console.log(catImages);
   return (
     <>
       <img src={catImages[currentIndex]} />
