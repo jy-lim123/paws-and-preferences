@@ -2,8 +2,14 @@
   touch-action: pan-y;
   user-select: none;
   margin-top: 30px;
+  cursor: grab;
+}
+
+.card-container:active {
+  cursor: grabbing;
 }
 
 .card-img{
   border-radius: 30px;
+  pointer-events: none;
 }
